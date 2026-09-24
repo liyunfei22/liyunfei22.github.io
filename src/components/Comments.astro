@@ -1,0 +1,41 @@
+---
+// giscus 评论组件（数据存在 GitHub Discussions，免费无广告）
+//
+// 开启步骤（见仓库 README「开启评论」一节）：
+// 1. 仓库公开后，到 https://giscus.app/zh-CN 填写仓库名，生成配置
+// 2. 把下面 repo / repoId / categoryId 换成生成页面给出的值
+// 3. push 后文章底部即出现评论区
+const GISCUS = {
+  repo: "", // 例如 "liyunfei02/liyunfei02.github.io"
+  repoId: "",
+  category: "Announcements",
+  categoryId: "",
+};
+
+const enabled = Boolean(GISCUS.repo && GISCUS.repoId && GISCUS.categoryId);
+---
+
+{
+  enabled && (
+    <section class="mt-8">
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo={GISCUS.repo}
+        data-repo-id={GISCUS.repoId}
+        data-category={GISCUS.category}
+        data-category-id={GISCUS.categoryId}
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async
+      />
+    </section>
+  )
+}
